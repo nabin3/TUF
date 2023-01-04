@@ -1,0 +1,4 @@
+one header file that include all header files in c++ is #include<bits/stdc++.h>
+string only accepts charachter stream upto space,in order to take a whole line we use getline(cin,string str) (in real world we will actually write getline(cin,str);get line pickes input until the line breaks or end
+we use [using namespace std] to avoid repeated writtng of std::cout or std::cin;Actually The identifiers of the C++ standard library are defined in a namespace called std 
+data type rang can be easily kept in mind in round figure like integer in range of -10^9 to 10^9, long in range of -10^12 to 10^12, long long in range of -10^18 to 10^18  
