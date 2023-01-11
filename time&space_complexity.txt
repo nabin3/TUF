@@ -1,0 +1,12 @@
+time complexity != time taken
+
+The Rate at which the time takes increases with respect to the input size is called time complexity.
+
+** always consider worst case senario
+** avoid constants
+** avoid lower values
+
+
+Space complexity = auxilary space(space you take for solving a problem) + input space(space needed to store inputs)
+
+** never ever do anything to input unless intervewire says to do so // example :for storing addition result of a+b you should not write b = a+b,cause then b will be changed

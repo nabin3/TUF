@@ -168,7 +168,7 @@ cout << q.front(); // prints 2
 // Priority queue starts here
 largest element will be given highest priority and that element will be in TOP (in string lexicographically largest string will be at top)
 inside priority queue a tree maintained ;priority queue is maintained as a tree i.e it is implemented according to tree data structure
-
+// this also called Max Heap
 priority_queue<int> pq;
 
 pq.push(5); // {5}
@@ -184,9 +184,168 @@ cout << pq.top(); // prints 8
 size, empty, swap functions are same as others
 
 // when I want a priority queue which store minimum element at top ,then syntax is following
-priority_queue<int, vector<int>, greater<int>> pq; // here pq is a priority queue which store minimum element at Top
+priority_queue<int, vector<int>, greater<int>> pq; // here pq is a priority queue which store minimum element at Top.This is also called as Minimum Heap(min heap)
 
 pq.push(5); // {5}
 pq.push(2); // {2, 5}
 pq.push(1); // {1, 2, 5}
 pq.emplace{8}; // {1, 2, 5, 8}
+
+time complexity for push() is O(N), for top() is O(1) and for pop() is O(N)
+
+
+\\ here start set
+
+all elements in set are unique and sorted ,here internally a tree is maintained
+
+set<int> st;
+st.insert(1); // {1}
+st.incert(2); // {1, 2}
+st.insert(2); // {1, 2} here 2 is not inserted because set maintain uniqeness in elements
+st.insert(4); // {1, 2, 4}
+st.insert(3); // {1, 2, 3, 4} here 3 has inserted before 4 because set maintain order, set always stored elements in sorted order
+st.emplace(5); // {1, 2, 3, 4, 5}
+
+begin,end,rbegin,rend,swap,size,empty function are same as those of above
+
+//{1, 2, 3, 4, 5}
+auto it = st.find(3); // return a iterator which points to 3
+auto it = st.find(6); // return an iterator which points to st.end() , if any element is not present in set then return address after last element's address
+st.erase(4); // {1, 2, 3, 5} erase() delete element and maintain sorted order, this function takes logarithmic time
+
+st.count(2); // count function always gives 1 or 0 as set maintain uniqueness in elements
+
+auto it = st.find(2);
+st.erase(it); // it takes constant time
+
+// {3, 5, 7, 9, 45}
+auto it1 = st.find(5);
+auto it2 = st.find(9);
+st.erase(it1, it2); // {3, 9, 45} deletes 5 and 7 [first, last)
+all other function like size,begin,end,empty,swap,rbegin,rend are same
+
+in set every operation happened in logarithm time complexity
+
+auto it = st.lower_bound(5);
+auto it = st.upper_bound(7); // O(log(N)) time complexity
+
+
+// multiset starts here
+
+multiset<int> ms; // same as set but only maintain the sorted charachteristics, but doesn't follow the uniqueness of elements
+
+ms.insert(1); // {1};
+ms.insert(1); // {1, 1};
+ms.insert(1); // {1, 1, 1};
+
+ms.count(1); // count the number of all occurance of 1
+
+ms.erase(1); // will delete every occurance of 1
+
+//{1, 1, 1, 1}
+ms.erase(ms.find(1), ms.find(1)+2); // erase first 2 occurance of 1, now muliset will be {1, 1}
+
+// rest functions are same as set
+ms.erase(ms.find(1)); // only single 1 will be errased ,cause find(1) will give to itertor first occurance of 1
+
+// unordered set 
+
+unordered set<int> st; // does maintain uniqueness but doesn't maintain sorted order, all operation is same as set,only lower_bound and upper_bound doesn't work here , all function has time complexity of O(1)(in very rare case time complexity will be O(N))
+
+
+// map starts
+
+a map store unique keys but it can contain duplicate values
+map<int,int> mpp; // key and value can be of any type of data
+map<int, pair<iny,int>> mpp; // here key is int type but value is a pair
+map<pair<int,int>, char> mpp; // here key is pair type and value is char type
+
+when map<int,int> mpp;
+then mpp[1] = 2; // store {1, 2} as 1 is key which refer value 2
+or I can use
+mpp.emplace{3, 1}; // store {3, 1} as 3 key and value 1
+or
+mpp.insert{2, 6}; // store {2, 6} as 2 key and value 6
+// the map will now look loke {{1,2}, {2,6}, {3,1}}
+// map contains unique keys in sorted order
+when map<pair<int,int>, int> mpp;  
+mpp[{2, 3}] = 10; // {{2,3}, 10} , {2,3} is key and 10 is value
+
+// traversing in map
+for (auto it: mpp) {
+	cout << it.first <<" " << it.second; // in every iteration it.first will give key and it.second will give value
+}
+// we can also traverse in a map through classic for loop with help of begin() and end() function
+
+// {{1,3}, {2,5}, {3,6}}
+cout << mpp[2] ; // gives 5
+cout << mpp[5]; // gives null(0) because key 5 doesn't exist
+
+auto it = mpp.find(3); // here it will be assigned iterator of key 3
+cout << *(it).second; // will give 6 which is value of key 3, and *(it) denotes the element
+
+auto it = mpp.find(5); // when a key does not exist it points to after the map i.e mpp.end()
+
+lower_bound and upper_bound also work 
+auto it = mpp.lower_bound(1);
+auto it = map.upper_bound(2);
+// erase, swap, size, empty works same as above
+
+//multimap
+
+multimap can contain duplicate keys, these keys will be in sorted order
+
+// unordered map
+this map will contain unique keys, but these keys will not be in sorted order
+in this type of map all function's time complexity will be in O(1), in very rare cases time complexity can be O(N)
+
+
+//extra_things
+
+//**sort() does not work in map
+sort(a, a+n); // a is first iterator and (a+n) is the iterator after array, this work in [first,last) manner
+sort(v.begin(), v.end()); // this is in case of vector and other containers 
+above sort fuctions will sort in increasing order
+
+sort(a, a+n, greater<int>);// now it will sort in descending order,here greater<int> is a comparator
+
+sort(a+2, a+4); // sort an array from index 2 to 3 (see sort() excluded index 4)
+
+//sorting in customize order
+
+pair<int,int> a[] = {{1,2}, {2, 1}, {4, 1}};
+// sort it according to second element 
+// if second element is same, then sort 
+// it according to first element but in descending
+
+sort(a, a+n, comp) // here we will write our on comparator,comp is comparator's name,comp is a function which returns boolean value
+
+bool comp(pair<int> p1, pair<int> p2) {
+	if (p1.second < p2.second) { 
+		return true;
+	}
+	else if(p1.second == p2.sevond) {
+		if(p1.first > p2.first) { 
+			return true;
+		} else {
+			return false;
+		}
+	} else 
+		return flase;
+}
+** in time of writtiing comparator we will consider data type of elements and analyze two elements at a given time
+// a[] = {{4,1}, {2,1}, {1,2}}
+
+
+builtin_popcount() & builtin_popcountll() will count the number of set bits in int type and long long data typeqi // like builtin_popcount(7) will return 3 as there is three bits in binary presentation of 7 
+
+string s = "123";
+
+do
+{
+	cout << s << " ";
+} while(next_permutation(s.begin(), s.end())); // will gve all permutation of string "123", to get all permutation we must have a sorted cotainer
+
+int maximum = *(max_element(a, a+n)); // max_element() return the address amd *(max_element() will give the element
+// min_element behave as same
+

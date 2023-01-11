@@ -1,0 +1,6 @@
+rules in patterns:
+	-> there will be nested loops.
+	-> for the outer loop, count the no. of lines
+	-> for the inner loop, focus on the colume, connect them somehow to the rows
+	-> whatever you want to print, print them inside the inner for loop
+	-> observe symetry in case of some patterns.(This is optional i.e this rule doesn't need to be applied on every patternes)
