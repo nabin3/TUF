@@ -264,6 +264,68 @@ void print19(int n) {
 	}
 }
 
+void print20(int n) {
+
+	int sp = 2 * (n - 1);
+	for (int i = 1; i <= 2*n - 1; i++) {
+
+		int stars = i;
+		if (i > n) stars = 2*n - i;
+		for (int j = 1; j <= stars; j++) {
+			cout << "*";
+		}
+
+		// spaces
+		for (int j = 1; j <= sp; j++) {
+			cout << " ";
+		}
+
+		// stars
+		for (int j = 1; j <= stars; j++) {
+			cout << "*";
+		}
+
+		if (i < n) sp -= 2;
+		else sp += 2;
+		
+		cout << endl;
+	}
+}
+
+void print21(int n) {
+	for (int i = 0; i < 2*n - 1; i++) {
+		char ch; 
+		if (i % 2 == 0) ch = '*';
+		else ch = ' ';
+		
+		for (int j = 0; j < n; j++) {
+			if (i == 0 || i == 2*(n - 1) || j == 0 || j == n - 1)  cout << ch;
+			else cout << " ";
+		}
+		cout << endl;
+	}
+}
+
+void print22(int n) {
+	for (int i = 0; i < 2*n - 1; i++) {
+
+		for (int j = 0; j < 2*n - 1; j++) {
+			
+			// distance of an element in respect to 4 side
+				int top = i;
+				int left = j;
+				int buttom = 2*(n - 1) - i;
+				int right = 2*(n - 1) - j;
+				int min_distance = min( min(top, buttom), min(left, right) );
+
+			// printing
+			cout << n - min_distance << " ";
+		}
+		
+		cout << endl;
+	}
+}
+	
 int main() {
 	cout << "pattern 1:" << endl;
 	print1(3);
@@ -304,4 +366,10 @@ int main() {
 	print18(5);
 	cout << "pattern 19:" << endl;
 	print19(6);
+	cout << "pattern 20:" << endl;
+	print20(5);
+	cout << "pattern 21:" << endl;
+	print21(5);
+	cout << "pattern 22:" << endl;
+	print22(9);
 }
