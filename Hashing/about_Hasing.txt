@@ -1,0 +1,4 @@
+Hashing:prestoring and fetching.
+
+you can take maximum array size of 10^6 inside main() and globally the maximum size of array will be 10^7
+for bool inside maain() 10^7 and globally 10^8.
