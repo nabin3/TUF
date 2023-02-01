@@ -1,0 +1,10 @@
+Selection_Sort: 
+    (outer loop will run 0 to (n-2) times and inner loop will run i(this i is from outer loop) to (n-1) times)
+    -> select the minimum number and swap that number with 0th index number.
+    -> then select the next minimum number and swap that number with 1st index number.
+    -> in this manner at last we will check the for minimum number between (n-2)th number and (n-1)th number and swap that minimum number with (n-2)th indexed number.
+
+Time_Complexity: O(N^2) {for worst, average and base case) ,where n is size of array.[ actually n+(n-1)+(n-2)+.....+1 = (n*(n+1)) / 2 = n^2/2 + n/2]
+
+
+Buble_Sort:
